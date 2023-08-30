@@ -18,6 +18,7 @@ This is a Django Progressive Web Application (PWA) marketplace webapp that uses 
 4. Run `python manage.py makemigrations market`
 5. Run `python manage.py migrate`
 6. Run the server using `python manage.py runserver`.
+### Note: We have to run migrations command for core before migrating the entire project simply because, core app has Custom user model.
 
 ## Features
 
