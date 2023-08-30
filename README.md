@@ -1,8 +1,8 @@
 # Fruu.com Django PWA Marketplace Webapp
 A PWA Django marketplace (+ Bulma CSS)
 
-This is a Django Progressive Web Application (PWA) marketplace webapp that uses the Bulma CSS framework.
-To check the working Demo click hero(https://anirbanbiswas.pythonanywhere.com/)
+This is a Django Progressive Web Application (PWA) marketplace webapp that uses the Bulma CSS framework.<br>
+To check the working Demo [click here](https://anirbanbiswas.pythonanywhere.com/).
 
 ## Prerequisites
 
