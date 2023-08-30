@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load extras %}
+{% load static %}
+{% load pwa %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fruu.com {% block title %}{% endblock title %}</title>
+    {% progressive_web_app_meta %}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body class="is-family-monospace">
+    <nav
+      class="navbar container"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="{% url 'home' %}">
+          <p class="has-text-weight-semibold is-size-3">Fruu.com</p>
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <form class="navbar-item" action="{% url 'search' %}" method="get">
+            <div class="field has-addons">
+                <div class="control">
+                  <input class="input" name="query" type="text" placeholder="What are you lookin' for..?">
+                </div>
+                <div class="control">
+                  <button class="button is-link">
+                    Search
+                  </button>
+                </div>
+              </div>
+          </form>
+          <div id="categoryToggle" class="navbar-item has-dropdown is-active">
+            <a class="navbar-link">
+              More
+            </a>
+    
+            <div id="categoryList" class="navbar-dropdown is-hidden">
+              {% categories %}
+            </div>
+        </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              {% if request.user.is_authenticated %}
+              <a href="{% url 'sell' %}" class="button is-link">
+                <strong>Sell</strong>
+              </a>
+              <a href="{% url 'profile' %}" class="button is-link">
+                  <strong>Your info</strong>
+                </a>
+                <a href="{% url 'log_out' %}" class="button is-danger"> Log out </a>
+              {% else %}
+                <a href="{% url 'sign_up' %}" class="button is-link">
+                  <strong>Sign up</strong>
+                </a>
+                <a href="{% url 'log_in' %}" class="button is-light"> Log in </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block content %}{% endblock content %}
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Fruu.com</strong>
+          <br />
+          Copyright (c) 2023
+        </p>
+      </div>
+    </footer>
+
+    <script src="{% static 'app.js' %}"></script>
+  </body>
+</html>

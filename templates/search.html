@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}| Search{% endblock title %}
+
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    {% if query %}
+        <div class="mb-6 has-text-centered">
+            <h1 class="title">{{query}}</h1>
+            <p class="subtitle">
+            {{num_listings}} results with the query <strong>{{query}}</strong>!
+            </p>
+        </div>
+        <div class="columns is-8 is-multiline">
+            {% for listing in listings %}
+                {% include './parts/listing.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="mb-6 has-text-centered">
+            <p class="subtitle">
+            No items to show!
+            </p>
+        </div>
+    {% endif %}
+    {% include 'parts/paginator.html' %}
+  </div>
+</section>
+{% endblock content %}

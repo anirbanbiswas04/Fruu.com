@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}| {{list.name}}{% endblock title %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        {% if list.created_by == request.user %}
+            <div class="columns is-mobile is-centered mb-5">
+                <a href="{% url 'update_sell' list.slug %}" class="button is-warning mx-1">Edit</a>
+                <a href="{% url 'delete_sell' list.slug %}" class="button is-danger mx-1">Delete</a>
+            </div>
+        {% endif %}
+      <div class="columns">
+          <div class="column is-10 is-offset-1">
+              <div class="columns is-multiline">
+                  <div class="column is-12">
+                      <div class="columns is-multiline">
+                        {% if list.image %}
+                          <div class="column">
+                              <img loading="lazy" src="{{list.image.url}}">
+                          </div>
+                        {% endif %}
+                          <div class="column">
+                              <h3 class="heading">{{list.category.name}}</h3>
+                              <h1 class="title">{{list.name}}</h1>
+                              {% if list.description %}
+                                <p>{{list.description}}</p>
+                              {% endif %}
+                              <br>
+                                <p>
+                                    <time>{{list.created_at|date:'H:m A - d b Y'}}</time> By {{list.created_by}}
+                                </p>
+                              <p>Location: {{list.location}}</p>
+                              <p>{% if list.contact_number %}Ph: {{list.contact_number}}{% endif %}</p>
+                              <p>{{list.created_by.email}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="mb-6 has-text-centered">
+        <h1 class="title">Similar listings</h1>
+        <p class="subtitle">
+          Related with <strong>{{list.category.name}}</strong>!
+        </p>
+      </div>
+        <div class="columns is-8 is-multiline">
+            {% for item in similar %}
+                {% include './parts/listing.html' with listing=item %}
+            {% empty %}
+            <p class="column subtitle has-text-centered">
+                No related items found!
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,23 @@
+<div class="column is-4 is-3-desktop is-6-tablet">
+  <div class="card">
+    <a href="{% url 'list_detail' listing.slug %}">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img
+            class="is-cover"
+            loading="lazy"
+            src="{{listing.get_thumbnail}}"
+            alt="{{listing.name}}"
+          />
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          {{listing.name}} - {{listing.location}}
+          <br />
+          <time>{{listing.created_at|date:'H:m A - d b Y'}}</time>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

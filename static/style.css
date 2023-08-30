@@ -1,0 +1,11 @@
+.is-cover {
+    object-fit: cover;
+}
+
+@media screen and (max-width: 480px) {
+    .navbar {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+    }
+}

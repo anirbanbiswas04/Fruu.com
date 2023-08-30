@@ -1,0 +1,16 @@
+{% load extras %}
+
+{% if listings.has_other_pages %}
+<nav class="pagination is-flex is-justify-content-center" role="navigation" aria-label="pagination">
+  {% if listings.has_previous %}
+    <a href="{% relative_url listings.previous_page_number 'page' request.GET.urlencode %}" class="pagination-previous">Previous</a>
+  {% else %}
+    <button class="pagination-previous" disabled>Previous</button>
+  {% endif %}
+  {% if listings.has_next %}
+    <a href="{% relative_url listings.next_page_number 'page' request.GET.urlencode %}" class="pagination-next">Next page</a>
+  {% else %}
+    <button class="pagination-next" disabled>Next page</button>
+  {% endif %}
+</nav>
+{% endif %}

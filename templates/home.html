@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero is-medium is-link">
+    <div class="hero-body">
+      <p class="title">Fruu.com</p>
+      <p class="subtitle">We make online buying and selling superbly easy</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="mb-6 has-text-centered">
+        <h1 class="title">Welcome</h1>
+        <p class="subtitle">
+          latest listings in <strong>Fruu</strong>!
+        </p>
+      </div>
+      <div class="columns is-8 is-multiline">
+        {% for listing in listings %}
+            {% include 'parts/listing.html' %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}| {{request.user.username}}{% endblock title %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="mb-6 has-text-centered">
+        <h1 class="title">{{request.user.username}}</h1>
+        <h3 class="has-size-3">{{request.user.username}}</h3>
+        <p class="subtitle">
+          You have total <strong>{{no_listings}} listing(s)</strong>!
+        </p>
+      </div>
+      <div class="columns is-8 is-multiline">
+        {% for listing in listings %}
+            {% include './parts/listing.html' %}
+        {% empty %}
+        <p class="subtitle">
+            You don't have any items!
+        </p>
+        {% endfor %}
+      </div>
+      {% include 'parts/paginator.html' %}
+    </div>
+  </section>
+{% endblock content %}

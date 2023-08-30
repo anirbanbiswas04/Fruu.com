@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}| {{category.name}}{% endblock title %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+      <div class="mb-6 has-text-centered">
+        <h1 class="title">{{category.name}}</h1>
+      </div>
+      <div class="columns is-8 is-multiline">
+        {% for listing in listings %}
+            {% include './parts/listing.html' %}
+        {% empty %}
+        <div class="column is-4 is-offset-5">
+            <p class="subtitle">
+            No items to show!
+            </p>
+        </div>
+        {% endfor %}
+      </div>
+      {% include 'parts/paginator.html' %}
+    </div>
+  </section>
+
+{% endblock content %}
