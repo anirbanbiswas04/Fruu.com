@@ -31,6 +31,7 @@
                                     <time>{{list.created_at|date:'H:m A - d b Y'}}</time> By {{list.created_by}}
                                 </p>
                               <p>Location: {{list.location}}</p>
+                              <p>Amount: {{list.amount}}</p>
                               <p>{% if list.contact_number %}Ph: {{list.contact_number}}{% endif %}</p>
                               <p>{{list.created_by.email}}</p>
                           </div>

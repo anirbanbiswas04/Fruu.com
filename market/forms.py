@@ -5,7 +5,7 @@ from .models import Listing
 class SellForm(forms.ModelForm):
     class Meta:
         model = Listing
-        fields = ('category', 'name', 'description', 'image', 'contact_number', 'location')
+        fields = ('category', 'name', 'description', 'amount', 'image', 'contact_number', 'location')
 
 
 class UpdateSellForm(SellForm):

@@ -31,6 +31,7 @@ class Listing(models.Model):
     description = models.TextField(blank=True, null=True)
     contact_number = models.CharField(max_length=20, blank=True, null=True)
     location = models.TextField()
+    amount = models.IntegerField(default=10000, blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     thumbnail = models.ImageField(upload_to='thumbnails', blank=True, null=True)
     image = models.ImageField(upload_to='image', blank=True, null=True)
