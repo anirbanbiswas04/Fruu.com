@@ -44,7 +44,7 @@ class Listing(models.Model):
         return f"{self.name} - {self.category} - {self.created_by}"
     
     def get_absolute_url(self):
-        return reverse("market:detail", args=[self.slug])
+        return reverse("list_detail", args=[self.slug])
     
     def get_thumbnail(self):
         if self.thumbnail:
